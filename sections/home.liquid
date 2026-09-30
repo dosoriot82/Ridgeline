@@ -1,0 +1,284 @@
+<header
+  class="home-header{% if section.settings.sticky %} home-header--sticky{% endif %}"
+  style="--home-header-logo-width: {{ section.settings.logo_width }}px;"
+>
+  <div class="home-header__inner">
+    <a class="home-header__logo" href="{{ routes.root_url }}">
+      {%- if section.settings.logo -%}
+        {{
+          section.settings.logo
+          | image_url: width: 600
+          | image_tag:
+            alt: shop.name,
+            widths: '150, 300, 450, 600',
+            sizes: '(min-width: 750px) 300px, 150px',
+            loading: 'eager'
+        }}
+      {%- else -%}
+        <span class="home-header__shop-name">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    {%- if section.settings.menu.links.size > 0 -%}
+      <details class="home-header__mobile-menu">
+        <summary
+          class="home-header__toggle"
+          aria-label="{{ 'sections.home_header.open_menu' | t }}"
+        >
+          <span class="home-header__toggle-bar"></span>
+          <span class="home-header__toggle-bar"></span>
+          <span class="home-header__toggle-bar"></span>
+        </summary>
+      </details>
+
+      <nav
+        class="home-header__nav"
+        aria-label="{{ 'sections.home_header.main_navigation' | t }}"
+      >
+        <ul class="home-header__menu" role="list">
+          {%- for link in section.settings.menu.links -%}
+            <li>
+              <a
+                href="{{ link.url }}"
+                class="home-header__link{% if link.active %} home-header__link--active{% endif %}"
+                {% if link.current %}
+                  aria-current="page"
+                {% endif %}
+              >
+                {{- link.title | escape -}}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+
+    <a
+      class="home-header__cart"
+      href="{{ routes.cart_url }}"
+      aria-label="{{ 'sections.home_header.cart_count' | t: count: cart.item_count }}"
+    >
+      {{ 'icon-cart.svg' | inline_asset_content }}
+      {%- if cart.item_count > 0 -%}
+        <span class="home-header__cart-count" aria-hidden="true">
+          {%- if cart.item_count < 100 -%}
+            {{ cart.item_count }}
+          {%- else -%}
+            99+
+          {%- endif -%}
+        </span>
+      {%- endif -%}
+    </a>
+  </div>
+</header>
+
+{% stylesheet %}
+  .home-header {
+    background-color: var(--color-background);
+    border-bottom: 1px solid rgb(from var(--color-foreground) r g b / 0.1);
+  }
+
+  .home-header--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .home-header__inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'logo nav cart';
+    align-items: center;
+    gap: 1.5rem;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 1rem var(--page-margin);
+  }
+
+  .home-header__logo {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .home-header__logo img {
+    display: block;
+    width: var(--home-header-logo-width);
+    max-width: 100%;
+    height: auto;
+  }
+
+  .home-header__shop-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .home-header__nav {
+    grid-area: nav;
+    justify-self: center;
+  }
+
+  .home-header__menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .home-header__link {
+    display: inline-block;
+    padding-block: 0.25rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .home-header__link:hover,
+  .home-header__link--active {
+    border-bottom-color: currentColor;
+  }
+
+  .home-header__cart {
+    grid-area: cart;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .home-header__cart svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .home-header__cart-count {
+    position: absolute;
+    top: 0.125rem;
+    right: 0;
+    min-width: 1.25rem;
+    height: 1.25rem;
+    padding: 0 0.3rem;
+    border-radius: 999px;
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    text-align: center;
+  }
+
+  .home-header__mobile-menu {
+    display: none;
+  }
+
+  @media (max-width: 749px) {
+    .home-header__inner {
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas:
+        'toggle logo cart'
+        'nav nav nav';
+      row-gap: 0;
+    }
+
+    .home-header__logo {
+      justify-self: center;
+    }
+
+    .home-header__mobile-menu {
+      display: block;
+      grid-area: toggle;
+    }
+
+    .home-header__toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 2.75rem;
+      height: 2.75rem;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .home-header__toggle::-webkit-details-marker {
+      display: none;
+    }
+
+    .home-header__toggle-bar {
+      display: block;
+      width: 1.5rem;
+      height: 2px;
+      background-color: var(--color-foreground);
+    }
+
+    .home-header__nav {
+      display: none;
+      justify-self: stretch;
+    }
+
+    .home-header__mobile-menu[open] ~ .home-header__nav {
+      display: block;
+    }
+
+    .home-header__menu {
+      flex-direction: column;
+      gap: 0;
+      padding-top: 1rem;
+    }
+
+    .home-header__link {
+      display: block;
+      padding-block: 0.75rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.home_header",
+  "tag": "section",
+  "class": "home-header-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:labels.logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "t:labels.logo_width",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 140
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:labels.menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky",
+      "label": "t:labels.sticky_header",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.home_header"
+    }
+  ]
+}
+{% endschema %}
