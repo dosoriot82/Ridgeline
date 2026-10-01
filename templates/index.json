@@ -9,12 +9,69 @@
  */
 {
   "sections": {
+    "custom_section_UcVxtL": {
+      "type": "custom-section",
+      "blocks": {
+        "group_6yzqeM": {
+          "type": "group",
+          "name": "t:general.column",
+          "settings": {
+            "layout_direction": "group--vertical",
+            "alignment": "flex-start",
+            "padding": 0
+          },
+          "blocks": {
+            "group_Rfpqtx": {
+              "type": "group",
+              "name": "t:general.row",
+              "settings": {
+                "layout_direction": "group--horizontal",
+                "alignment": "flex-start",
+                "padding": 0
+              },
+              "blocks": {}
+            },
+            "group_7J49XB": {
+              "type": "group",
+              "name": "t:general.row",
+              "settings": {
+                "layout_direction": "group--horizontal",
+                "alignment": "flex-start",
+                "padding": 0
+              },
+              "blocks": {}
+            },
+            "group_MkTfmy": {
+              "type": "group",
+              "name": "t:general.row",
+              "settings": {
+                "layout_direction": "group--horizontal",
+                "alignment": "flex-start",
+                "padding": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "group_Rfpqtx",
+            "group_7J49XB",
+            "group_MkTfmy"
+          ]
+        }
+      },
+      "block_order": [
+        "group_6yzqeM"
+      ],
+      "name": "t:general.custom_section",
+      "settings": {}
+    },
     "main": {
       "type": "hello-world",
       "settings": {}
     }
   },
   "order": [
+    "custom_section_UcVxtL",
     "main"
   ]
 }
