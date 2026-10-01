@@ -37,8 +37,8 @@
         "slide_3"
       ],
       "settings": {
-        "heading": "Equípate para cada ruta",
-        "button_label": "Comprar ahora",
+        "heading": "",
+        "button_label": "",
         "button_link": "shopify://collections/all"
       }
     },
