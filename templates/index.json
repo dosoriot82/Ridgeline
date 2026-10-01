@@ -14,15 +14,21 @@
       "blocks": {
         "slide_1": {
           "type": "slide",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/Ridgeline_-_Slide_003.webp"
+          }
         },
         "slide_2": {
           "type": "slide",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/Ridgeline_-_Slide_002.webp"
+          }
         },
         "slide_3": {
           "type": "slide",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/Ridgeline_-_Slide_001.webp"
+          }
         }
       },
       "block_order": [
@@ -43,35 +49,40 @@
           "type": "category",
           "settings": {
             "collection": "",
-            "title": "Helmets"
+            "title": "Helmets",
+            "image": "shopify://shop_images/Ridgeline_-_Helmet_-_Black.webp"
           }
         },
         "goggles": {
           "type": "category",
           "settings": {
             "collection": "",
-            "title": "Goggles"
+            "title": "Goggles",
+            "image": "shopify://shop_images/Ridgeline_-_Goggle_-_Black.webp"
           }
         },
         "guantes": {
           "type": "category",
           "settings": {
             "collection": "",
-            "title": "Gloves"
+            "title": "Gloves",
+            "image": "shopify://shop_images/Ridgeline_-_Gloves_-_Black.webp"
           }
         },
         "chaquetas": {
           "type": "category",
           "settings": {
             "collection": "",
-            "title": "Chaquetas"
+            "title": "Chaquetas",
+            "image": "shopify://shop_images/Ridgeline_-_Jacket_-_Black.webp"
           }
         },
         "botas": {
           "type": "category",
           "settings": {
             "collection": "",
-            "title": "Botas"
+            "title": "Botas",
+            "image": "shopify://shop_images/Ridgeline_-_Boots_-_Black.webp"
           }
         }
       },
