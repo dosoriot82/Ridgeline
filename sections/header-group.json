@@ -14,70 +14,19 @@
     "header": {
       "type": "header",
       "settings": {
+        "logo_width": 140,
         "menu": "main-menu",
         "customer_account_menu": "customer-account-main-menu"
       }
     },
     "custom_section_GRyUCX": {
       "type": "custom-section",
-      "blocks": {
-        "group_yna3ex": {
-          "type": "group",
-          "name": "t:general.row",
-          "settings": {
-            "layout_direction": "group--horizontal",
-            "alignment": "flex-start",
-            "padding": 0
-          },
-          "blocks": {
-            "text_jh7LkU": {
-              "type": "text",
-              "name": "t:general.text",
-              "settings": {
-                "text": "Featured Products",
-                "text_style": "text--subtitle",
-                "alignment": "left"
-              },
-              "blocks": {}
-            },
-            "text_iYtxPD": {
-              "type": "text",
-              "name": "t:general.text",
-              "settings": {
-                "text": "Text",
-                "text_style": "text--title",
-                "alignment": "left"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_jh7LkU",
-            "text_iYtxPD"
-          ]
-        }
-      },
-      "block_order": [
-        "group_yna3ex"
-      ],
       "name": "t:general.custom_section",
       "settings": {}
-    },
-    "collections_erXiHX": {
-      "type": "collections",
-      "custom_css": [
-        "h2 {font-size: 24px; margin-top: 20px; margin-bottom: 20px;}"
-      ],
-      "name": "t:general.collections_grid",
-      "settings": {
-        "grid_item_width": "collections--full",
-        "grid_gap": 40
-      }
     }
   },
   "order": [
     "header",
-    "custom_section_GRyUCX",
-    "collections_erXiHX"
+    "custom_section_GRyUCX"
   ]
 }

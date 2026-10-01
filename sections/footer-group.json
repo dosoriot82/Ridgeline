@@ -14,11 +14,7 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "description": "Equipo de protección para motociclismo todoterreno.",
-        "menu_heading": "Tienda",
         "menu": "main-menu",
-        "secondary_menu_heading": "Información",
-        "secondary_menu": "footer",
         "show_payment_icons": true
       }
     }
