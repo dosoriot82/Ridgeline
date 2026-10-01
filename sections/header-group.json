@@ -21,19 +21,44 @@
     "custom_section_GRyUCX": {
       "type": "custom-section",
       "blocks": {
-        "text_yxKEqB": {
-          "type": "text",
-          "name": "t:general.text",
+        "group_yna3ex": {
+          "type": "group",
+          "name": "t:general.row",
           "settings": {
-            "text": "Featured Products",
-            "text_style": "text--subtitle",
-            "alignment": "left"
+            "layout_direction": "group--horizontal",
+            "alignment": "flex-start",
+            "padding": 0
           },
-          "blocks": {}
+          "blocks": {
+            "text_jh7LkU": {
+              "type": "text",
+              "name": "t:general.text",
+              "settings": {
+                "text": "Featured Products",
+                "text_style": "text--subtitle",
+                "alignment": "left"
+              },
+              "blocks": {}
+            },
+            "text_iYtxPD": {
+              "type": "text",
+              "name": "t:general.text",
+              "settings": {
+                "text": "Text",
+                "text_style": "text--title",
+                "alignment": "left"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_jh7LkU",
+            "text_iYtxPD"
+          ]
         }
       },
       "block_order": [
-        "text_yxKEqB"
+        "group_yna3ex"
       ],
       "name": "t:general.custom_section",
       "settings": {}
