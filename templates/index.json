@@ -15,19 +15,19 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Ridgeline_-_Slide_003.webp"
+            "image": "shopify://shop_images/Ridgeline_-_Slide_3.webp"
           }
         },
         "slide_2": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Ridgeline_-_Slide_002.webp"
+            "image": "shopify://shop_images/Ridgeline_-_Slide_2.webp"
           }
         },
         "slide_3": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Ridgeline_-_Slide_001.webp"
+            "image": "shopify://shop_images/Ridgeline_-_Slide_1.webp"
           }
         }
       },
@@ -37,7 +37,7 @@
         "slide_3"
       ],
       "custom_css": [
-        ".hero-carousel {display: block; position: relative; height: clamp(22rem, 50svh, 44rem); overflow: hidden;}"
+        ".hero-carousel {display: block; position: relative; height: clamp(22rem, 40svh, 44rem); overflow: hidden;}"
       ],
       "settings": {
         "heading": "",
@@ -61,7 +61,7 @@
           "settings": {
             "collection": "",
             "title": "Goggles",
-            "image": "shopify://shop_images/Ridgeline_-_Goggle_-_Black.webp"
+            "image": "shopify://shop_images/Ridgeline_-_Goggle_-_Black_1.webp"
           }
         },
         "guantes": {
@@ -76,7 +76,7 @@
           "type": "category",
           "settings": {
             "collection": "",
-            "title": "Chaquetas",
+            "title": "Jackets",
             "image": "shopify://shop_images/Ridgeline_-_Jacket_-_Black.webp"
           }
         },
@@ -84,7 +84,7 @@
           "type": "category",
           "settings": {
             "collection": "",
-            "title": "Botas",
+            "title": "Boots",
             "image": "shopify://shop_images/Ridgeline_-_Boots_-_Black.webp"
           }
         }
