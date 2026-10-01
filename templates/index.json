@@ -36,6 +36,9 @@
         "slide_2",
         "slide_3"
       ],
+      "custom_css": [
+        ".hero-carousel {display: block; position: relative; height: clamp(22rem, 55svh, 44rem); overflow: hidden;}"
+      ],
       "settings": {
         "heading": "",
         "button_label": "",
