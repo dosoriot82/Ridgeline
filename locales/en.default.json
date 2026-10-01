@@ -57,6 +57,28 @@
         "one": "Cart ({{ count }} item)",
         "other": "Cart ({{ count }} items)"
       }
+    },
+    "header": {
+      "main_navigation": "Main navigation",
+      "open_menu": "Open menu",
+      "cart_count": {
+        "one": "Cart ({{ count }} item)",
+        "other": "Cart ({{ count }} items)"
+      }
+    },
+    "hero_carousel": {
+      "previous": "Previous slide",
+      "next": "Next slide",
+      "go_to_slide": "Go to slide {{ index }}",
+      "slide_position": "Slide {{ index }} of {{ total }}"
+    },
+    "featured_products": {
+      "placeholder_title": "Product title"
+    },
+    "newsletter": {
+      "email": "Email",
+      "subscribe": "Subscribe",
+      "success": "Thanks for subscribing."
     }
   }
 }

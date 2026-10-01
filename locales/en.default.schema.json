@@ -32,7 +32,14 @@
     "text": "Text",
     "theme": "Theme",
     "typography": "Typography",
-    "home_header": "Home header"
+    "home_header": "Home header",
+    "brand_story": "Brand story",
+    "category": "Category",
+    "category_list": "Category list",
+    "featured_products": "Featured products",
+    "hero_carousel": "Hero carousel",
+    "newsletter": "Email signup",
+    "slide": "Slide"
   },
   "labels": {
     "alignment": "Alignment",
@@ -52,7 +59,16 @@
     "text": "Text",
     "logo": "Logo",
     "logo_width": "Logo width",
-    "sticky_header": "Sticky header"
+    "sticky_header": "Sticky header",
+    "button_label": "Button label",
+    "button_link": "Button link",
+    "description": "Description",
+    "heading": "Heading",
+    "image": "Image",
+    "menu_heading": "Menu heading",
+    "secondary_menu": "Secondary menu",
+    "secondary_menu_heading": "Secondary menu heading",
+    "title": "Title"
   },
   "options": {
     "alignment": {

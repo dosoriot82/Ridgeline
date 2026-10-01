@@ -1,0 +1,64 @@
+{% doc %}
+  Renders a link styled as a button.
+
+  When `type` is provided, a `<button>` element is rendered instead of a
+  link. Add the `button--inverse` class when the button sits on top of an image.
+
+  @param {string} label - The text of the button
+  @param {string} [url] - The destination URL of the button
+  @param {string} [type] - Renders a `<button>` element with this type, e.g. `submit`
+  @param {string} [class] - Optional class to be added to the button
+
+  @example
+  {% render 'button', label: section.settings.button_label, url: section.settings.button_link %}
+  {% render 'button', label: 'Shop now', url: routes.all_products_collection_url, class: 'button--inverse' %}
+  {% render 'button', label: 'Subscribe', type: 'submit' %}
+{% enddoc %}
+
+{% if type %}
+  <button class="button {{ class }}" type="{{ type }}">
+    {{- label | escape -}}
+  </button>
+{% else %}
+  <a class="button {{ class }}" href="{{ url | default: routes.all_products_collection_url }}">
+    {{- label | escape -}}
+  </a>
+{% endif %}
+
+{% stylesheet %}
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 1.75rem;
+    border: 1px solid var(--color-foreground);
+    border-radius: var(--style-border-radius-inputs);
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+    font: inherit;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .button:hover {
+    opacity: 0.85;
+  }
+
+  .button:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  .button--inverse {
+    border-color: var(--color-background);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  .button--inverse:focus-visible {
+    outline-color: var(--color-background);
+  }
+{% endstylesheet %}

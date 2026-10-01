@@ -1,39 +1,106 @@
-<footer>
-  <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
+<footer class="footer">
+  <div class="footer__columns">
+    <div class="footer__column">
+      <h2 class="footer__heading">{{ shop.name | link_to: routes.root_url }}</h2>
+
+      {% if section.settings.description != blank %}
+        <p>{{ section.settings.description | escape }}</p>
+      {% endif %}
+    </div>
+
+    <div class="footer__column">
+      {% if section.settings.menu_heading != blank %}
+        <h2 class="footer__heading">{{ section.settings.menu_heading | escape }}</h2>
+      {% endif %}
+
+      <ul class="footer__links" role="list">
+        {% for link in section.settings.menu.links %}
+          <li>{{ link.title | escape | link_to: link.url }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="footer__column">
+      {% if section.settings.secondary_menu_heading != blank %}
+        <h2 class="footer__heading">{{ section.settings.secondary_menu_heading | escape }}</h2>
+      {% endif %}
+
+      <ul class="footer__links" role="list">
+        {% for link in section.settings.secondary_menu.links %}
+          <li>{{ link.title | escape | link_to: link.url }}</li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
+  <div class="footer__bottom">
+    <div class="footer__copyright">
+      &copy;
+      {{ 'now' | date: '%Y' }}
+      {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
+    </div>
 
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
-      {% endfor %}
-    {% endif %}
+    <div class="footer__payment">
+      {% if section.settings.show_payment_icons %}
+        {% for type in shop.enabled_payment_types %}
+          {{ type | payment_type_svg_tag }}
+        {% endfor %}
+      {% endif %}
+    </div>
   </div>
 </footer>
 
 {% stylesheet %}
-  footer {
-    display: flex;
-    justify-content: space-between;
+  .footer {
     margin-top: 2rem;
+    padding-block: 3rem 2rem;
+    border-top: 1px solid rgb(from var(--color-foreground) r g b / 0.1);
+    line-height: 1.5;
   }
-  footer a {
+  .footer a {
     text-decoration: none;
     color: var(--color-foreground);
   }
-  footer .footer__links,
-  footer .footer__payment {
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  .footer__columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .footer__heading {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+  .footer__links {
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgb(from var(--color-foreground) r g b / 0.1);
+  }
+  .footer__payment {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 749px) {
+    .footer__columns {
+      grid-template-columns: 1fr;
+    }
   }
 {% endstylesheet %}
 
@@ -42,9 +109,29 @@
   "name": "t:general.footer",
   "settings": [
     {
+      "type": "text",
+      "id": "description",
+      "label": "t:labels.description"
+    },
+    {
+      "type": "text",
+      "id": "menu_heading",
+      "label": "t:labels.menu_heading"
+    },
+    {
       "type": "link_list",
       "id": "menu",
       "label": "t:labels.menu"
+    },
+    {
+      "type": "text",
+      "id": "secondary_menu_heading",
+      "label": "t:labels.secondary_menu_heading"
+    },
+    {
+      "type": "link_list",
+      "id": "secondary_menu",
+      "label": "t:labels.secondary_menu"
     },
     {
       "type": "checkbox",

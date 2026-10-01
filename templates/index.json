@@ -9,6 +9,131 @@
  */
 {
   "sections": {
+    "hero": {
+      "type": "hero-carousel",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
+      "settings": {
+        "heading": "Equípate para cada ruta",
+        "button_label": "Comprar ahora",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "categories": {
+      "type": "category-list",
+      "blocks": {
+        "cascos": {
+          "type": "category",
+          "settings": {
+            "title": "Cascos"
+          }
+        },
+        "goggles": {
+          "type": "category",
+          "settings": {
+            "title": "Goggles"
+          }
+        },
+        "guantes": {
+          "type": "category",
+          "settings": {
+            "title": "Guantes"
+          }
+        },
+        "chaquetas": {
+          "type": "category",
+          "settings": {
+            "title": "Chaquetas"
+          }
+        },
+        "botas": {
+          "type": "category",
+          "settings": {
+            "title": "Botas"
+          }
+        }
+      },
+      "block_order": [
+        "cascos",
+        "goggles",
+        "guantes",
+        "chaquetas",
+        "botas"
+      ],
+      "settings": {
+        "heading": "Categorías"
+      }
+    },
+    "featured_products": {
+      "type": "featured-products",
+      "blocks": {
+        "product_1": {
+          "type": "product",
+          "settings": {
+            "product": "ridgeline-trail-pro-helmet"
+          }
+        },
+        "product_2": {
+          "type": "product",
+          "settings": {
+            "product": "ridgeline-trail-pro-helmet"
+          }
+        },
+        "product_3": {
+          "type": "product",
+          "settings": {
+            "product": "ridgeline-dust-runner-mesh-jacket"
+          }
+        },
+        "product_4": {
+          "type": "product",
+          "settings": {
+            "product": "ridgeline-ridgeback-riding-boots"
+          }
+        }
+      },
+      "block_order": [
+        "product_1",
+        "product_2",
+        "product_3",
+        "product_4"
+      ],
+      "settings": {
+        "heading": "Productos destacados"
+      }
+    },
+    "brand_story": {
+      "type": "brand-story",
+      "settings": {
+        "heading": "Historia de la marca",
+        "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Suscríbete a nuestro boletín",
+        "text": "Recibe lanzamientos, novedades y ofertas exclusivas en tu correo.",
+        "button_label": "Suscribirme"
+      }
+    },
     "custom_section_UcVxtL": {
       "type": "custom-section",
       "blocks": {
@@ -72,6 +197,11 @@
     }
   },
   "order": [
+    "hero",
+    "categories",
+    "featured_products",
+    "brand_story",
+    "newsletter",
     "custom_section_UcVxtL",
     "custom_section_Ry9n7y"
   ]

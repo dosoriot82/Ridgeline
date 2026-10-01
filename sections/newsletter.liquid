@@ -1,0 +1,134 @@
+<div class="newsletter">
+  {% if section.settings.heading != blank %}
+    <h2 class="newsletter__heading">{{ section.settings.heading | escape }}</h2>
+  {% endif %}
+
+  {% if section.settings.text != blank %}
+    <p class="newsletter__text">{{ section.settings.text | escape }}</p>
+  {% endif %}
+
+  {% form 'customer', class: 'newsletter__form' %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+
+    {% if form.posted_successfully? %}
+      <p class="newsletter__message" role="status">{{ 'sections.newsletter.success' | t }}</p>
+    {% else %}
+      <div class="newsletter__fields">
+        <input
+          class="newsletter__input"
+          type="email"
+          name="contact[email]"
+          value="{{ form.email }}"
+          placeholder="{{ 'sections.newsletter.email' | t }}"
+          aria-label="{{ 'sections.newsletter.email' | t }}"
+          autocomplete="email"
+          autocapitalize="off"
+          required
+        >
+        {% liquid
+          assign subscribe_label = 'sections.newsletter.subscribe' | t
+          assign button_label = section.settings.button_label | default: subscribe_label
+          render 'button', label: button_label, type: 'submit'
+        %}
+      </div>
+
+      {% if form.errors %}
+        <div class="newsletter__message" role="alert">
+          {{ form.errors | default_errors }}
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endform %}
+</div>
+
+{% stylesheet %}
+  .newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 4rem;
+    text-align: center;
+  }
+
+  .newsletter__heading {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .newsletter__text {
+    max-width: 40rem;
+    line-height: 1.5;
+  }
+
+  .newsletter__form {
+    width: 100%;
+    max-width: 32rem;
+    margin-top: 0.5rem;
+  }
+
+  .newsletter__fields {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .newsletter__input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.875rem 1rem;
+    border: 1px solid rgb(from var(--color-foreground) r g b / 0.4);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  .newsletter__input:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  .newsletter__message {
+    margin-top: 0.75rem;
+  }
+
+  .newsletter__message ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (max-width: 479px) {
+    .newsletter__fields {
+      flex-direction: column;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Subscribe to our newsletter"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "Be the first to know about new gear and exclusive offers."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:labels.button_label",
+      "default": "Subscribe"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.newsletter"
+    }
+  ]
+}
+{% endschema %}
