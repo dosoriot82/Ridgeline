@@ -14,7 +14,11 @@
     "footer": {
       "type": "footer",
       "settings": {
+        "description": "Welcome to Ridgeline, your ultimate outfitter for enduro, dual-sport, and adventure motorcycle gear. We equip riders who seek the unpaved path, tackle technical singletracks, and cross continents on two wheels. Every trail demands resilience—and your riding kit should never be the weak link.",
+        "menu_heading": "Pages",
         "menu": "main-menu",
+        "secondary_menu_heading": "Follow Us on",
+        "secondary_menu": "",
         "show_payment_icons": true
       }
     }
