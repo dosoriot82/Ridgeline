@@ -96,6 +96,9 @@
         "chaquetas",
         "botas"
       ],
+      "custom_css": [
+        ".category-card {box-shadow: 0 0 15px 2px #e4e4e4; padding: 20px;}"
+      ],
       "settings": {
         "heading": "Categorías"
       }
