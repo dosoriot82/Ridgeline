@@ -17,9 +17,42 @@
         "menu": "main-menu",
         "customer_account_menu": "customer-account-main-menu"
       }
+    },
+    "custom_section_GRyUCX": {
+      "type": "custom-section",
+      "blocks": {
+        "text_yxKEqB": {
+          "type": "text",
+          "name": "t:general.text",
+          "settings": {
+            "text": "Featured Products",
+            "text_style": "text--subtitle",
+            "alignment": "left"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_yxKEqB"
+      ],
+      "name": "t:general.custom_section",
+      "settings": {}
+    },
+    "collections_erXiHX": {
+      "type": "collections",
+      "custom_css": [
+        "h2 {font-size: 24px; margin-top: 20px; margin-bottom: 20px;}"
+      ],
+      "name": "t:general.collections_grid",
+      "settings": {
+        "grid_item_width": "collections--compact",
+        "grid_gap": 20
+      }
     }
   },
   "order": [
-    "header"
+    "header",
+    "custom_section_GRyUCX",
+    "collections_erXiHX"
   ]
 }
