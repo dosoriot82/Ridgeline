@@ -45,8 +45,8 @@
       ],
       "name": "t:general.collections_grid",
       "settings": {
-        "grid_item_width": "collections--compact",
-        "grid_gap": 20
+        "grid_item_width": "collections--full",
+        "grid_gap": 40
       }
     }
   },
