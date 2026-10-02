@@ -51,7 +51,7 @@
         "cascos": {
           "type": "category",
           "settings": {
-            "collection": "",
+            "collection": "helmet",
             "title": "Helmets",
             "image": "shopify://shop_images/Ridgeline_-_Helmet_-_Black.webp"
           }
@@ -59,7 +59,7 @@
         "goggles": {
           "type": "category",
           "settings": {
-            "collection": "",
+            "collection": "goggles",
             "title": "Goggles",
             "image": "shopify://shop_images/Ridgeline_-_Goggle_-_Black_1.webp"
           }
@@ -75,7 +75,7 @@
         "chaquetas": {
           "type": "category",
           "settings": {
-            "collection": "",
+            "collection": "jackets",
             "title": "Jackets",
             "image": "shopify://shop_images/Ridgeline_-_Jacket_-_Black.webp"
           }
@@ -83,7 +83,7 @@
         "botas": {
           "type": "category",
           "settings": {
-            "collection": "",
+            "collection": "boots",
             "title": "Boots",
             "image": "shopify://shop_images/Ridgeline_-_Boots_-_Black.webp"
           }
@@ -106,6 +106,18 @@
     "featured_products": {
       "type": "featured-products",
       "blocks": {
+        "product_zjLiwy": {
+          "type": "product",
+          "settings": {
+            "product": "ridgeline-trail-pants"
+          }
+        },
+        "product_GMFXNX": {
+          "type": "product",
+          "settings": {
+            "product": "ridgeline-dust-runner-mesh-jacket"
+          }
+        },
         "product_hCyqmF": {
           "type": "product",
           "settings": {
@@ -117,18 +129,13 @@
           "settings": {
             "product": "ridgeline-summit-adventure-jacket"
           }
-        },
-        "product_2": {
-          "type": "product",
-          "settings": {
-            "product": "ridgeline-trail-pro-helmet"
-          }
         }
       },
       "block_order": [
+        "product_zjLiwy",
+        "product_GMFXNX",
         "product_hCyqmF",
-        "product_1",
-        "product_2"
+        "product_1"
       ],
       "settings": {
         "heading": "Productos destacados"
