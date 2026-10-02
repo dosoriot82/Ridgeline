@@ -161,9 +161,7 @@
     },
     "newsletter": {
       "type": "newsletter",
-      "custom_css": [
-        ".newsletter {background-color: #cccccc;}"
-      ],
+      "custom_css": [],
       "settings": {
         "heading": "Suscríbete a nuestro boletín",
         "text": "Recibe lanzamientos, novedades y ofertas exclusivas en tu correo.",
