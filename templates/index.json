@@ -150,10 +150,13 @@
     },
     "brand_story": {
       "type": "brand-story",
-      "custom_css": [],
+      "custom_css": [
+        "h2 {color: #e7e7e7;}",
+        "p {color: #e7e7e7;}"
+      ],
       "settings": {
         "heading": "Our History",
-        "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>"
+        "text": "<p>Fueled by a relentless passion for the open road and the thrill of off-road adventure, our brand was established with a singular mission: to protect riders without compromising on style. What began as a local effort to source high-quality riding gear has evolved into a trusted global name for riders who demand performance and durability. Our journey has been defined by a dedication to innovation, meticulously testing each helmet, glove, goggle, boot, and jacket to ensure it meets the highest standards. We are more than just gear; we are a community of explorers, committed to outfitting your next escape with unyielding protection.</p>"
       }
     },
     "newsletter": {
