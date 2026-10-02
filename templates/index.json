@@ -154,7 +154,9 @@
     },
     "newsletter": {
       "type": "newsletter",
-      "custom_css": [],
+      "custom_css": [
+        ".newsletter {margin: 20px 0;}"
+      ],
       "settings": {
         "heading": "Suscríbete a nuestro boletín",
         "text": "Recibe lanzamientos, novedades y ofertas exclusivas en tu correo.",
