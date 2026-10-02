@@ -11,6 +11,9 @@
   "sections": {
     "main": {
       "type": "collection",
+      "custom_css": [
+        ".collection-product {box-shadow: 0 0 15px 2px #e4e4e4; padding: 20px;}"
+      ],
       "settings": {}
     }
   },
