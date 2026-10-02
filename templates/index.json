@@ -123,26 +123,12 @@
           "settings": {
             "product": "ridgeline-trail-pro-helmet"
           }
-        },
-        "product_3": {
-          "type": "product",
-          "settings": {
-            "product": "ridgeline-dust-runner-mesh-jacket"
-          }
-        },
-        "product_4": {
-          "type": "product",
-          "settings": {
-            "product": "ridgeline-ridgeback-riding-boots"
-          }
         }
       },
       "block_order": [
         "product_hCyqmF",
         "product_1",
-        "product_2",
-        "product_3",
-        "product_4"
+        "product_2"
       ],
       "settings": {
         "heading": "Productos destacados"
