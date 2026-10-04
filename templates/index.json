@@ -67,7 +67,7 @@
         "guantes": {
           "type": "category",
           "settings": {
-            "collection": "",
+            "collection": "gloves",
             "title": "Gloves",
             "image": "shopify://shop_images/Ridgeline_-_Gloves_-_Black.webp"
           }
