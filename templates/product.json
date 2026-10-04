@@ -19,48 +19,10 @@
     },
     "17910768055843f302": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_6a4c134_yUcU8g": {
-          "type": "ai_gen_block_6a4c134",
-          "settings": {
-            "product": "ridgeline-trail-pants",
-            "desktop_width_percent": 100,
-            "show_vendor": true,
-            "show_description": true,
-            "show_quantity": true
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_6a4c134_yUcU8g"
-      ],
       "settings": {}
     },
     "17910769525bb4786d": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_6b12460_VCBeUE": {
-          "type": "ai_gen_block_6b12460",
-          "settings": {
-            "heading": "También te puede interesar",
-            "related_products": [
-              "ridgeline-summit-adventure-jacket",
-              "ridgeline-moto-jersey",
-              "ridgeline-trail-pants"
-            ],
-            "product_limit": 3,
-            "desktop_width_percent": 100,
-            "columns_desktop": "4",
-            "columns_mobile": "2",
-            "corner_radius": 8
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_6b12460_VCBeUE"
-      ],
       "settings": {}
     }
   },
