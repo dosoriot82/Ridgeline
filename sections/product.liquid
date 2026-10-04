@@ -8,7 +8,84 @@
 {% assign current_variant = product.selected_or_first_available_variant %}
 
 <product-info class="product">
-    <div class="product__info">
+  <div class="product__media">
+    {% if product.images.size > 0 %}
+      {% assign gallery_id = 'ProductGallery-' | append: section.id %}
+      <product-tab-gallery class="product-gallery">
+        <div class="product-gallery__panels">
+          {% for image in product.images %}
+            <div
+              class="product-gallery__panel"
+              id="{{ gallery_id }}-panel-{{ forloop.index }}"
+              {% if forloop.length > 1 %}
+                role="tabpanel"
+                aria-labelledby="{{ gallery_id }}-tab-{{ forloop.index }}"
+              {% endif %}
+              {% unless forloop.first %}
+                hidden
+              {% endunless %}
+            >
+              {% liquid
+                assign image_alt = image.alt | default: product.title
+                if forloop.first
+                  assign image_loading = 'eager'
+                  assign image_priority = 'high'
+                else
+                  assign image_loading = 'lazy'
+                  assign image_priority = 'auto'
+                endif
+              %}
+              {{
+                image
+                | image_url: width: 1600
+                | image_tag:
+                  widths: '400, 600, 800, 1000, 1300, 1600',
+                  sizes: '(min-width: 990px) calc(50vw - 4rem), calc(100vw - 2rem)',
+                  loading: image_loading,
+                  fetchpriority: image_priority,
+                  alt: image_alt,
+                  class: 'product-gallery__image'
+              }}
+            </div>
+          {% endfor %}
+        </div>
+
+        {% if product.images.size > 1 %}
+          <div
+            class="product-gallery__tabs"
+            role="tablist"
+            aria-label="{{ 'products.gallery.label' | t }}"
+          >
+            {% for image in product.images %}
+              <button
+                type="button"
+                class="product-gallery__tab"
+                id="{{ gallery_id }}-tab-{{ forloop.index }}"
+                role="tab"
+                aria-controls="{{ gallery_id }}-panel-{{ forloop.index }}"
+                aria-label="{{ 'products.gallery.show_image' | t: index: forloop.index, total: forloop.length }}"
+                {% if forloop.first %}
+                  aria-selected="true"
+                  tabindex="0"
+                {% else %}
+                  aria-selected="false"
+                  tabindex="-1"
+                {% endif %}
+              >
+                {{
+                  image
+                  | image_url: width: 200, height: 200, crop: 'center'
+                  | image_tag: loading: 'lazy', alt: '', class: 'product-gallery__thumb'
+                }}
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </product-tab-gallery>
+    {% endif %}
+  </div>
+
+  <div class="product__info">
     <h1 class="product__title">{{ product.title | escape }}</h1>
 
     <div
@@ -120,82 +197,6 @@
         </div>
       {% endform %}
     </div>
-  </div>
-  <div class="product__media">
-    {% if product.images.size > 0 %}
-      {% assign gallery_id = 'ProductGallery-' | append: section.id %}
-      <product-tab-gallery class="product-gallery">
-        <div class="product-gallery__panels">
-          {% for image in product.images %}
-            <div
-              class="product-gallery__panel"
-              id="{{ gallery_id }}-panel-{{ forloop.index }}"
-              {% if forloop.length > 1 %}
-                role="tabpanel"
-                aria-labelledby="{{ gallery_id }}-tab-{{ forloop.index }}"
-              {% endif %}
-              {% unless forloop.first %}
-                hidden
-              {% endunless %}
-            >
-              {% liquid
-                assign image_alt = image.alt | default: product.title
-                if forloop.first
-                  assign image_loading = 'eager'
-                  assign image_priority = 'high'
-                else
-                  assign image_loading = 'lazy'
-                  assign image_priority = 'auto'
-                endif
-              %}
-              {{
-                image
-                | image_url: width: 1600
-                | image_tag:
-                  widths: '400, 600, 800, 1000, 1300, 1600',
-                  sizes: '(min-width: 990px) calc(50vw - 4rem), calc(100vw - 2rem)',
-                  loading: image_loading,
-                  fetchpriority: image_priority,
-                  alt: image_alt,
-                  class: 'product-gallery__image'
-              }}
-            </div>
-          {% endfor %}
-        </div>
-
-        {% if product.images.size > 1 %}
-          <div
-            class="product-gallery__tabs"
-            role="tablist"
-            aria-label="{{ 'products.gallery.label' | t }}"
-          >
-            {% for image in product.images %}
-              <button
-                type="button"
-                class="product-gallery__tab"
-                id="{{ gallery_id }}-tab-{{ forloop.index }}"
-                role="tab"
-                aria-controls="{{ gallery_id }}-panel-{{ forloop.index }}"
-                aria-label="{{ 'products.gallery.show_image' | t: index: forloop.index, total: forloop.length }}"
-                {% if forloop.first %}
-                  aria-selected="true"
-                  tabindex="0"
-                {% else %}
-                  aria-selected="false"
-                  tabindex="-1"
-                {% endif %}
-              >
-                {{
-                  image
-                  | image_url: width: 200, height: 200, crop: 'center'
-                  | image_tag: loading: 'lazy', alt: '', class: 'product-gallery__thumb'
-                }}
-              </button>
-            {% endfor %}
-          </div>
-        {% endif %}
-      </product-tab-gallery>
-    {% endif %}
   </div>
 </product-info>
 
