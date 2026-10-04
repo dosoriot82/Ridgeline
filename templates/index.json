@@ -138,7 +138,7 @@
         "product_1"
       ],
       "custom_css": [
-        ".featured-product:hover {border: 1px solid #f2f2f2; box-shadow: 0 0 15px 2px #e4e4e4;}",
+        ".featured-product:hover {border: 1px solid #f2f2f2; box-shadow: 0 0 15px 2px #e4e4e4; transition: 400ms;}",
         ".featured-product__content {padding: 10px;}"
       ],
       "settings": {
