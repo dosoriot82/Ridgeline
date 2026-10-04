@@ -1,0 +1,165 @@
+{% doc %}
+  @prompt
+    Crea una sección para conectar y mostrar la descripción de los productos
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-product-description-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    box-sizing: border-box;
+    color: {{ block.settings.text_color }};
+    background: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding }}px;
+    font-family: inherit;
+  }
+
+  .ai-product-description__inner-{{ ai_gen_id }} {
+    max-width: {{ block.settings.content_width }}px;
+    margin-inline: auto;
+  }
+
+  .ai-product-description__title-{{ ai_gen_id }} {
+    color: inherit;
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.2;
+    margin: 0 0 16px;
+  }
+
+  .ai-product-description__body-{{ ai_gen_id }} {
+    color: inherit;
+    font-size: {{ block.settings.body_size }}px;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+  }
+
+  .ai-product-description__body-{{ ai_gen_id }} > :first-child {
+    margin-top: 0;
+  }
+
+  .ai-product-description__body-{{ ai_gen_id }} > :last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-product-description__empty-{{ ai_gen_id }} {
+    padding: 20px;
+    background: rgba(128, 128, 128, 0.08);
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.body_size }}px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-product-description-{{ ai_gen_id }} {
+      width: 100%;
+      padding: {{ block.settings.mobile_padding }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-product-description-{{ ai_gen_id }}" style="width: {{ block.settings.desktop_width_percent }}%;" {{ block.shopify_attributes }}>
+  <div class="ai-product-description__inner-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-product-description__title-{{ ai_gen_id }}">{{ block.settings.heading | escape }}</h2>
+    {% endif %}
+    {% if product != blank and product.description != blank %}
+      <div class="ai-product-description__body-{{ ai_gen_id }} rte">{{ product.description }}</div>
+    {% elsif request.design_mode %}
+      <div class="ai-product-description__empty-{{ ai_gen_id }}">La descripción del producto aparecerá aquí. Añade una descripción al producto en Shopify para mostrarla.</div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Descripción del producto",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Encabezado",
+      "default": "Detalles del producto"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Ancho en escritorio",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Ancho máximo del contenido",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "default": 900
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Tamaño del encabezado",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Tamaño del texto",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Espaciado en escritorio",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding",
+      "label": "Espaciado en móvil",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Texto",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Fondo",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Descripción del producto"
+    }
+  ],
+  "tag": null,
+  "class": "product-description-block"
+}
+{% endschema %}
