@@ -158,8 +158,8 @@
         ".newsletter {margin: 20px 0;}"
       ],
       "settings": {
-        "heading": "Suscríbete a nuestro boletín",
-        "text": "Recibe lanzamientos, novedades y ofertas exclusivas en tu correo.",
+        "heading": "Subscribe",
+        "text": "Get new releases, updates, and exclusive offers delivered to your inbox.",
         "button_label": "Subscribe"
       }
     },
