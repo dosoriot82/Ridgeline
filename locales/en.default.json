@@ -52,7 +52,11 @@
     "enter": "Enter"
   },
   "products": {
-    "description": "Description"
+    "description": "Description",
+    "gallery": {
+      "label": "Product images",
+      "show_image": "Show image {{ index }} of {{ total }}"
+    }
   },
   "search": {
     "title": "Search",

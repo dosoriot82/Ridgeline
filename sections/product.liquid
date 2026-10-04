@@ -5,11 +5,80 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/product
 {% endcomment %}
 
-<div class="product-images">
-  {% for image in product.images %}
-    {% render 'image', class: 'product-image', image: image %}
-  {% endfor %}
-</div>
+{% if product.images.size > 0 %}
+  {% assign gallery_id = 'ProductGallery-' | append: section.id %}
+  <product-tab-gallery class="product-gallery">
+    <div class="product-gallery__panels">
+      {% for image in product.images %}
+        <div
+          class="product-gallery__panel"
+          id="{{ gallery_id }}-panel-{{ forloop.index }}"
+          {% if forloop.length > 1 %}
+            role="tabpanel"
+            aria-labelledby="{{ gallery_id }}-tab-{{ forloop.index }}"
+          {% endif %}
+          {% unless forloop.first %}
+            hidden
+          {% endunless %}
+        >
+          {% liquid
+            assign image_alt = image.alt | default: product.title
+            if forloop.first
+              assign image_loading = 'eager'
+              assign image_priority = 'high'
+            else
+              assign image_loading = 'lazy'
+              assign image_priority = 'auto'
+            endif
+          %}
+          {{
+            image
+            | image_url: width: 1600
+            | image_tag:
+              widths: '400, 600, 800, 1000, 1300, 1600',
+              sizes: '(min-width: 990px) 55vw, calc(100vw - 2rem)',
+              loading: image_loading,
+              fetchpriority: image_priority,
+              alt: image_alt,
+              class: 'product-gallery__image'
+          }}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if product.images.size > 1 %}
+      <div
+        class="product-gallery__tabs"
+        role="tablist"
+        aria-label="{{ 'products.gallery.label' | t }}"
+      >
+        {% for image in product.images %}
+          <button
+            type="button"
+            class="product-gallery__tab"
+            id="{{ gallery_id }}-tab-{{ forloop.index }}"
+            role="tab"
+            aria-controls="{{ gallery_id }}-panel-{{ forloop.index }}"
+            aria-label="{{ 'products.gallery.show_image' | t: index: forloop.index, total: forloop.length }}"
+            {% if forloop.first %}
+              aria-selected="true"
+              tabindex="0"
+            {% else %}
+              aria-selected="false"
+              tabindex="-1"
+            {% endif %}
+          >
+            {{
+              image
+              | image_url: width: 200, height: 200, crop: 'center'
+              | image_tag: loading: 'lazy', alt: '', class: 'product-gallery__thumb'
+            }}
+          </button>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </product-tab-gallery>
+{% endif %}
 
 <div class="product-info">
   <h1>{{ product.title }}</h1>
@@ -38,6 +107,86 @@
 </div>
 
 {% stylesheet %}
+  .product-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .product-gallery__panels {
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background-color: color-mix(in srgb, var(--color-foreground) 4%, transparent);
+  }
+
+  .product-gallery__panel {
+    view-transition-name: product-gallery-image;
+  }
+
+  .product-gallery__image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+
+  .product-gallery__tabs {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 2px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+
+  .product-gallery__tab {
+    flex: 0 0 4.5rem;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-foreground) 15%, transparent);
+    border-radius: 0.375rem;
+    background: none;
+    cursor: pointer;
+    opacity: 0.6;
+    scroll-snap-align: start;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+  }
+
+  .product-gallery__tab:hover {
+    opacity: 1;
+  }
+
+  .product-gallery__tab[aria-selected='true'] {
+    border-color: var(--color-foreground);
+    opacity: 1;
+  }
+
+  .product-gallery__tab:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  .product-gallery__thumb {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  @media (min-width: 750px) {
+    .product-gallery__tab {
+      flex-basis: 5.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .product-gallery__tab {
+      transition: none;
+    }
+
+    ::view-transition-group(product-gallery-image) {
+      animation: none;
+    }
+  }
+
   .product-description {
     --product-description-border: color-mix(in srgb, var(--color-foreground) 15%, transparent);
     --product-description-muted: color-mix(in srgb, var(--color-foreground) 75%, transparent);
@@ -156,6 +305,56 @@
     }
   }
 {% endstylesheet %}
+
+{% javascript %}
+  class ProductTabGallery extends HTMLElement {
+    connectedCallback() {
+      this.tabs = Array.from(this.querySelectorAll('[role="tab"]'));
+      this.tabs.forEach((tab) => {
+        tab.addEventListener('click', () => this.select(tab));
+        tab.addEventListener('keydown', (event) => this.onKeydown(event));
+      });
+    }
+
+    onKeydown(event) {
+      const index = this.tabs.indexOf(event.currentTarget);
+      const last = this.tabs.length - 1;
+      const targets = {
+        ArrowRight: index === last ? 0 : index + 1,
+        ArrowLeft: index === 0 ? last : index - 1,
+        Home: 0,
+        End: last,
+      };
+      if (!(event.key in targets)) return;
+      event.preventDefault();
+      const tab = this.tabs[targets[event.key]];
+      tab.focus();
+      this.select(tab);
+    }
+
+    select(tab) {
+      if (tab.getAttribute('aria-selected') === 'true') return;
+      const update = () => {
+        this.tabs.forEach((item) => {
+          const selected = item === tab;
+          item.setAttribute('aria-selected', String(selected));
+          item.tabIndex = selected ? 0 : -1;
+          document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+        });
+      };
+      if (document.startViewTransition) {
+        document.startViewTransition(update);
+      } else {
+        update();
+      }
+      tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    }
+  }
+
+  if (!customElements.get('product-tab-gallery')) {
+    customElements.define('product-tab-gallery', ProductTabGallery);
+  }
+{% endjavascript %}
 
 <div class="product-form">
   {% form 'product', product %}
