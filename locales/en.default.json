@@ -53,6 +53,16 @@
   },
   "products": {
     "description": "Description",
+    "form": {
+      "variant": "Variant",
+      "quantity": "Quantity",
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out"
+    },
+    "price": {
+      "regular": "Regular price",
+      "sale": "Sale price"
+    },
     "gallery": {
       "label": "Product images",
       "show_image": "Show image {{ index }} of {{ total }}"

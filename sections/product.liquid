@@ -5,108 +5,336 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/product
 {% endcomment %}
 
-{% if product.images.size > 0 %}
-  {% assign gallery_id = 'ProductGallery-' | append: section.id %}
-  <product-tab-gallery class="product-gallery">
-    <div class="product-gallery__panels">
-      {% for image in product.images %}
-        <div
-          class="product-gallery__panel"
-          id="{{ gallery_id }}-panel-{{ forloop.index }}"
-          {% if forloop.length > 1 %}
-            role="tabpanel"
-            aria-labelledby="{{ gallery_id }}-tab-{{ forloop.index }}"
-          {% endif %}
-          {% unless forloop.first %}
-            hidden
-          {% endunless %}
-        >
-          {% liquid
-            assign image_alt = image.alt | default: product.title
-            if forloop.first
-              assign image_loading = 'eager'
-              assign image_priority = 'high'
-            else
-              assign image_loading = 'lazy'
-              assign image_priority = 'auto'
-            endif
-          %}
-          {{
-            image
-            | image_url: width: 1600
-            | image_tag:
-              widths: '400, 600, 800, 1000, 1300, 1600',
-              sizes: '(min-width: 990px) 55vw, calc(100vw - 2rem)',
-              loading: image_loading,
-              fetchpriority: image_priority,
-              alt: image_alt,
-              class: 'product-gallery__image'
-          }}
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<product-info class="product">
+  <div class="product__media">
+    {% if product.images.size > 0 %}
+      {% assign gallery_id = 'ProductGallery-' | append: section.id %}
+      <product-tab-gallery class="product-gallery">
+        <div class="product-gallery__panels">
+          {% for image in product.images %}
+            <div
+              class="product-gallery__panel"
+              id="{{ gallery_id }}-panel-{{ forloop.index }}"
+              {% if forloop.length > 1 %}
+                role="tabpanel"
+                aria-labelledby="{{ gallery_id }}-tab-{{ forloop.index }}"
+              {% endif %}
+              {% unless forloop.first %}
+                hidden
+              {% endunless %}
+            >
+              {% liquid
+                assign image_alt = image.alt | default: product.title
+                if forloop.first
+                  assign image_loading = 'eager'
+                  assign image_priority = 'high'
+                else
+                  assign image_loading = 'lazy'
+                  assign image_priority = 'auto'
+                endif
+              %}
+              {{
+                image
+                | image_url: width: 1600
+                | image_tag:
+                  widths: '400, 600, 800, 1000, 1300, 1600',
+                  sizes: '(min-width: 990px) calc(50vw - 4rem), calc(100vw - 2rem)',
+                  loading: image_loading,
+                  fetchpriority: image_priority,
+                  alt: image_alt,
+                  class: 'product-gallery__image'
+              }}
+            </div>
+          {% endfor %}
         </div>
-      {% endfor %}
+
+        {% if product.images.size > 1 %}
+          <div
+            class="product-gallery__tabs"
+            role="tablist"
+            aria-label="{{ 'products.gallery.label' | t }}"
+          >
+            {% for image in product.images %}
+              <button
+                type="button"
+                class="product-gallery__tab"
+                id="{{ gallery_id }}-tab-{{ forloop.index }}"
+                role="tab"
+                aria-controls="{{ gallery_id }}-panel-{{ forloop.index }}"
+                aria-label="{{ 'products.gallery.show_image' | t: index: forloop.index, total: forloop.length }}"
+                {% if forloop.first %}
+                  aria-selected="true"
+                  tabindex="0"
+                {% else %}
+                  aria-selected="false"
+                  tabindex="-1"
+                {% endif %}
+              >
+                {{
+                  image
+                  | image_url: width: 200, height: 200, crop: 'center'
+                  | image_tag: loading: 'lazy', alt: '', class: 'product-gallery__thumb'
+                }}
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </product-tab-gallery>
+    {% endif %}
+  </div>
+
+  <div class="product__info">
+    <h1 class="product__title">{{ product.title | escape }}</h1>
+
+    <div
+      class="product__price"
+      data-product-price
+      data-label-sale="{{ 'products.price.sale' | t | escape }}"
+      data-label-regular="{{ 'products.price.regular' | t | escape }}"
+    >
+      {%- if current_variant.compare_at_price > current_variant.price -%}
+        <span class="visually-hidden">{{ 'products.price.sale' | t }}</span>
+        <span class="product__price-current">{{ current_variant.price | money }}</span>
+        <span class="visually-hidden">{{ 'products.price.regular' | t }}</span>
+        <s class="product__price-compare">{{ current_variant.compare_at_price | money }}</s>
+      {%- else -%}
+        <span class="product__price-current">{{ current_variant.price | money }}</span>
+      {%- endif -%}
     </div>
 
-    {% if product.images.size > 1 %}
-      <div
-        class="product-gallery__tabs"
-        role="tablist"
-        aria-label="{{ 'products.gallery.label' | t }}"
-      >
-        {% for image in product.images %}
-          <button
-            type="button"
-            class="product-gallery__tab"
-            id="{{ gallery_id }}-tab-{{ forloop.index }}"
-            role="tab"
-            aria-controls="{{ gallery_id }}-panel-{{ forloop.index }}"
-            aria-label="{{ 'products.gallery.show_image' | t: index: forloop.index, total: forloop.length }}"
-            {% if forloop.first %}
-              aria-selected="true"
-              tabindex="0"
-            {% else %}
-              aria-selected="false"
-              tabindex="-1"
-            {% endif %}
+    {% if product.description != blank %}
+      <details class="product-description" open>
+        <summary class="product-description__summary">
+          <h2 class="product-description__title">{{ 'products.description' | t }}</h2>
+          <svg
+            class="product-description__icon"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 16 16"
+            width="16"
+            height="16"
           >
-            {{
-              image
-              | image_url: width: 200, height: 200, crop: 'center'
-              | image_tag: loading: 'lazy', alt: '', class: 'product-gallery__thumb'
-            }}
-          </button>
-        {% endfor %}
-      </div>
+            <path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </summary>
+        <div class="product-description__content rte">
+          {{ product.description }}
+        </div>
+      </details>
     {% endif %}
-  </product-tab-gallery>
-{% endif %}
 
-<div class="product-info">
-  <h1>{{ product.title }}</h1>
-  <p>{{ product.price | money }}</p>
+    <div class="product-form">
+      {% form 'product', product, class: 'product-form__form' %}
+        {{ form.errors | default_errors }}
 
-  {% if product.description != blank %}
-    <details class="product-description" open>
-      <summary class="product-description__summary">
-        <h2 class="product-description__title">{{ 'products.description' | t }}</h2>
-        <svg
-          class="product-description__icon"
-          aria-hidden="true"
-          focusable="false"
-          viewBox="0 0 16 16"
-          width="16"
-          height="16"
-        >
-          <path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </summary>
-      <div class="product-description__content rte">
-        {{ product.description }}
-      </div>
-    </details>
-  {% endif %}
-</div>
+        {% if product.has_only_default_variant %}
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+        {% else %}
+          <div class="product-form__field">
+            <label class="product-form__label" for="ProductVariant-{{ section.id }}">
+              {{- 'products.form.variant' | t -}}
+            </label>
+            <select
+              class="product-form__input"
+              id="ProductVariant-{{ section.id }}"
+              name="id"
+              data-variant-select
+            >
+              {% for variant in product.variants %}
+                <option
+                  value="{{ variant.id }}"
+                  data-price="{{ variant.price | money | escape }}"
+                  data-compare-price="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money | escape }}{% endif %}"
+                  data-available="{{ variant.available }}"
+                  {% if variant == current_variant %}
+                    selected="selected"
+                  {% endif %}
+                >
+                  {{ variant.title | escape }}
+                  {%- unless variant.available %} - {{ 'products.form.sold_out' | t }}{% endunless %}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endif %}
+
+        <div class="product-form__field">
+          <label class="product-form__label" for="ProductQuantity-{{ section.id }}">
+            {{- 'products.form.quantity' | t -}}
+          </label>
+          <input
+            class="product-form__input product-form__quantity"
+            id="ProductQuantity-{{ section.id }}"
+            type="number"
+            name="quantity"
+            min="1"
+            step="1"
+            value="1"
+            inputmode="numeric"
+          >
+        </div>
+
+        <div class="product-form__buttons">
+          <button
+            type="submit"
+            class="product-form__submit"
+            data-add-to-cart
+            data-label-available="{{ 'products.form.add_to_cart' | t | escape }}"
+            data-label-sold-out="{{ 'products.form.sold_out' | t | escape }}"
+            {% unless current_variant.available %}
+              disabled
+            {% endunless %}
+          >
+            {%- if current_variant.available -%}
+              {{ 'products.form.add_to_cart' | t }}
+            {%- else -%}
+              {{ 'products.form.sold_out' | t }}
+            {%- endif -%}
+          </button>
+          {{ form | payment_button }}
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</product-info>
 
 {% stylesheet %}
+  .product {
+    display: grid;
+    gap: 2rem;
+    padding-block: 2rem 4rem;
+  }
+
+  .product__media {
+    min-width: 0;
+  }
+
+  .product__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 0;
+  }
+
+  .product__title {
+    font-size: clamp(1.75rem, 1.2rem + 2vw, 2.5rem);
+    line-height: 1.15;
+  }
+
+  .product__price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+  }
+
+  .product__price-current {
+    font-weight: 600;
+  }
+
+  .product__price-compare {
+    font-size: 1rem;
+    opacity: 0.6;
+  }
+
+  .product-form__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .product-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .product-form__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .product-form__input {
+    padding: 0.75rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-foreground) 25%, transparent);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  .product-form__input:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  .product-form__quantity {
+    max-width: 7rem;
+  }
+
+  .product-form__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .product-form__submit {
+    width: 100%;
+    padding: 0.875rem 1.75rem;
+    border: 1px solid var(--color-foreground);
+    border-radius: var(--style-border-radius-inputs);
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+    font: inherit;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .product-form__submit:hover:not(:disabled) {
+    opacity: 0.85;
+  }
+
+  .product-form__submit:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  .product-form__submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (min-width: 990px) {
+    .product {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas: 'info media';
+      align-items: start;
+      gap: 4rem;
+    }
+
+    .product__info {
+      grid-area: info;
+    }
+
+    .product__media {
+      grid-area: media;
+      position: sticky;
+      top: 2rem;
+    }
+  }
+
   .product-gallery {
     display: flex;
     flex-direction: column;
@@ -178,7 +406,8 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .product-gallery__tab {
+    .product-gallery__tab,
+    .product-form__submit {
       transition: none;
     }
 
@@ -354,31 +583,52 @@
   if (!customElements.get('product-tab-gallery')) {
     customElements.define('product-tab-gallery', ProductTabGallery);
   }
+
+  class ProductInfo extends HTMLElement {
+    connectedCallback() {
+      this.select = this.querySelector('[data-variant-select]');
+      if (!this.select) return;
+      this.price = this.querySelector('[data-product-price]');
+      this.submit = this.querySelector('[data-add-to-cart]');
+      this.select.addEventListener('change', () => this.onVariantChange());
+    }
+
+    onVariantChange() {
+      const option = this.select.selectedOptions[0];
+      const { price, comparePrice, available } = option.dataset;
+      const { labelSale, labelRegular } = this.price.dataset;
+      const create = (tag, className, text) => {
+        const element = document.createElement(tag);
+        element.className = className;
+        element.textContent = text;
+        return element;
+      };
+      const current = create('span', 'product__price-current', price);
+      if (comparePrice) {
+        this.price.replaceChildren(
+          create('span', 'visually-hidden', labelSale),
+          current,
+          create('span', 'visually-hidden', labelRegular),
+          create('s', 'product__price-compare', comparePrice)
+        );
+      } else {
+        this.price.replaceChildren(current);
+      }
+      const isAvailable = available === 'true';
+      this.submit.disabled = !isAvailable;
+      this.submit.textContent = isAvailable
+        ? this.submit.dataset.labelAvailable
+        : this.submit.dataset.labelSoldOut;
+      const url = new URL(window.location.href);
+      url.searchParams.set('variant', option.value);
+      window.history.replaceState({}, '', url);
+    }
+  }
+
+  if (!customElements.get('product-info')) {
+    customElements.define('product-info', ProductInfo);
+  }
 {% endjavascript %}
-
-<div class="product-form">
-  {% form 'product', product %}
-    {% assign current_variant = product.selected_or_first_available_variant %}
-
-    <select name="id">
-      {% for variant in product.variants %}
-        <option
-          value="{{ variant.id }}"
-          {% if variant == current_variant %}
-            selected="selected"
-          {% endif %}
-        >
-          {{ variant.title }} - {{ variant.price | money }}
-        </option>
-      {% endfor %}
-    </select>
-
-    <input type="text" name="quantity" min="1" value="1">
-
-    <input type="submit" value="Add to cart">
-    {{ form | payment_button }}
-  {% endform %}
-</div>
 
 {% schema %}
 {
