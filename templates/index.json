@@ -139,7 +139,7 @@
       ],
       "custom_css": [
         ".featured-product:hover {border: 1px solid #f2f2f2;}",
-        ".featured-product__content:hover {padding: 10px;}"
+        ".featured-product__content {padding: 10px;}"
       ],
       "settings": {
         "heading": "Productos destacados"
