@@ -12,10 +12,10 @@
     "main": {
       "type": "collections",
       "custom_css": [
-        "h1 {margin-bottom: 2rem; font-size: 2rem; font-weight: 700; text-align: center; background-color: #ee6b19; padding: 40px 0;}",
+        "h1 {margin-bottom: 2rem; font-size: 2rem; font-weight: 700; text-align: center; background-color: #ee6b1940; padding: 40px 0;}",
         ".collection-card {padding: 0; text-align: center;}",
         ".collection-card__content {background-color: #ffffff; padding: 0 10px 10px;}",
-        ".collection-card__content>p {font-size: 1.3rem;}",
+        ".collection-card__content > p {font-size: 1.3rem;}",
         "a {font-size: 1.2rem; text-decoration: none; color: #333; font-weight: bold; line-height: 2rem;}"
       ],
       "settings": {

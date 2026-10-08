@@ -11,6 +11,9 @@
   "sections": {
     "main": {
       "type": "page",
+      "custom_css": [
+        "h1 {margin-bottom: 2rem; font-size: 2rem; font-weight: 700; text-align: center; background-color: #ee6b1940; padding: 40px 0;}"
+      ],
       "settings": {}
     }
   },
