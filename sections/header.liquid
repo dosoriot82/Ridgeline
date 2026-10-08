@@ -62,6 +62,13 @@
 </header>
 
 {% stylesheet %}
+  .shopify-section:has(> .header) {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-background);
+    border-bottom: 3px solid #ee6b19;
+  }
   .header {
     display: grid;
     grid-template-columns: auto 1fr auto;
