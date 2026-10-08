@@ -11,6 +11,10 @@
   "sections": {
     "main": {
       "type": "product",
+      "custom_css": [
+        ".shopify-payment-button__button--unbranded {background-color: #ee6b19; font-family: inherit;}",
+        ".product__price-current {color: #ee6b19; font-size: 1.6rem;}"
+      ],
       "settings": {}
     },
     "1791076511290b3568": {
