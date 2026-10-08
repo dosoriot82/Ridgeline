@@ -58,6 +58,23 @@
     background-color: var(--color-background);
     border-bottom: 3px solid #ee6b19;
   }
+  .search__form input[type='search'] {
+    flex: 1;
+    min-width: 0;
+    padding: 0.75rem 1rem;
+    border: 1px solid currentcolor;
+    background-color: transparent;
+    color: inherit;
+  }
+  .search__form button {
+    padding: 0.75rem 1.5rem;
+    border: 0;
+    background-color: #ee6b19;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
   .search-results {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
