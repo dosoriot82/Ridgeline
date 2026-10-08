@@ -37,7 +37,9 @@
         "slide_3"
       ],
       "custom_css": [
-        ".hero-carousel {display: block; position: relative; height: clamp(22rem, 40svh, 44rem); overflow: hidden;}"
+        ".hero-carousel {display: block; position: relative; height: clamp(22rem, 40svh, 44rem); overflow: hidden;}",
+        ".hero-carousel__content {position: absolute; right: 0; bottom: 0; left: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; padding: 3rem max(var(--page-margin), 4rem); color: #fff; text-align: center; pointer-events: none;}",
+        ".button--inverse {border-color: #ee6b19; background-color: #ee6b19; color: #1a1a18;}"
       ],
       "settings": {
         "heading": "",
