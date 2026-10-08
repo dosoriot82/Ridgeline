@@ -104,7 +104,7 @@
         ".category-card__title {font-size: 1.3rem; padding: 0 10px 10px; color: #1a1a18;}"
       ],
       "settings": {
-        "heading": "Categorías"
+        "heading": "Categories"
       }
     },
     "featured_products": {
@@ -147,7 +147,7 @@
         "a {color: #1a1a18; font-size: 1.4rem; text-decoration: none;}"
       ],
       "settings": {
-        "heading": "Productos destacados"
+        "heading": "Featured Products"
       }
     },
     "brand_story": {
@@ -161,7 +161,7 @@
     "newsletter": {
       "type": "newsletter",
       "custom_css": [
-        ".newsletter {margin: 20px 0; background-color: #EE6B19;}"
+        ".newsletter {margin: 20px 0; background-color: #ee6b1920; border: 1px solid #ee6b1990;}"
       ],
       "settings": {
         "heading": "Subscribe",
