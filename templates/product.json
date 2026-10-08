@@ -12,6 +12,9 @@
     "main": {
       "type": "product",
       "custom_css": [
+        "h1 {color: #eae0c5;}",
+        "h2 {font-size: 1.4rem;}",
+        ".product-form__label {font-size: 1.2rem;}",
         ".shopify-payment-button__button--unbranded {background-color: #ee6b19; font-family: inherit;}",
         ".product__price-current {color: #ee6b19; font-size: 1.6rem;}"
       ],
