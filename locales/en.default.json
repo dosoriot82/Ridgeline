@@ -87,6 +87,9 @@
     "header": {
       "main_navigation": "Main navigation",
       "open_menu": "Open menu",
+      "search": "Search products",
+      "search_placeholder": "Search products",
+      "search_submit": "Search",
       "cart_count": {
         "one": "Cart ({{ count }} item)",
         "other": "Cart ({{ count }} items)"
