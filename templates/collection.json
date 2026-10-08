@@ -13,8 +13,8 @@
       "type": "collection",
       "custom_css": [
         "h1 {margin-bottom: 2rem; font-size: 2rem; font-weight: 700; text-align: center; background-color: #e1f1ec; padding: 40px 0;}",
-        ".collection-product {padding: 20px; background-color: #ffffff;}",
-        "a {font-size: 1.2rem; text-decoration: none; color: #333; font-weight: bold; line-height: 2rem;}"
+        ".collection-product {padding: 0 10px 10px; background-color: #ffffff; color: #ee6b19; font-size: 1.6rem;}",
+        "a {font-size: 1.3rem; text-decoration: none; color: #333; font-weight: bold; line-height: 2rem;}"
       ],
       "settings": {}
     }
