@@ -16,9 +16,10 @@
         "h2 {font-size: 1.4rem;}",
         ".product-form__label {font-size: 1.2rem;}",
         ".shopify-payment-button__button--unbranded {background-color: #ee6b19; font-family: inherit;}",
+        ".shopify-payment-button__button--unbranded:hover {background-color: #c64e02;}",
         ".product__price-current {color: #ee6b19; font-size: 1.6rem;}",
         ".product-form__input {border: 1px solid #ee6b1980;}",
-        ".product-description{border-block: 1px solid #ee6b1960;}"
+        ".product-description {border-block: 1px solid #ee6b1960;}"
       ],
       "settings": {}
     },
