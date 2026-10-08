@@ -39,7 +39,8 @@
       "custom_css": [
         ".hero-carousel {display: block; position: relative; height: clamp(22rem, 40svh, 44rem); overflow: hidden;}",
         ".button--inverse {border-color: #ee6b19; background-color: #ee6b19; color: #1a1a18; font-size: 1.3rem;}",
-        ".hero-carousel__content {top: 70%;}"
+        ".hero-carousel__content {top: 70%;}",
+        ".hero-carousel__arrow {background-color: #ffffff60; color: #ffffff;}"
       ],
       "settings": {
         "heading": "",
