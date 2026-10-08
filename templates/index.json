@@ -104,7 +104,7 @@
         ".category-card__title {font-size: 1.3rem; padding: 0 10px 10px; color: #1a1a18;}"
       ],
       "settings": {
-        "heading": "Categories"
+        "heading": "Shop by category"
       }
     },
     "featured_products": {
