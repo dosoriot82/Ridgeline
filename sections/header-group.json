@@ -16,11 +16,11 @@
       "custom_css": [
         "a {color: #eae0c5; font-size: 1.4rem; font-weight: 600;}",
         ".header__icons {color: #eae0c5;}",
-        ".header__menu a:hover {border-bottom: 2px solid #EE6B19;}"
+        ".header__menu a:hover {border-bottom: 2px solid #ee6b19;}"
       ],
       "settings": {
-        "logo": "shopify://shop_images/ridgeline-moto-supply-logo.webp",
-        "logo_width": 100,
+        "logo": "shopify://shop_images/RIDGELINE_LOGO_f4dac21e-2b26-4a84-a64d-f3a0b8a28277.svg",
+        "logo_width": 180,
         "menu": "main-menu",
         "customer_account_menu": "customer-account-main-menu"
       }
