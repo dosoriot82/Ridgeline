@@ -144,7 +144,7 @@
       "custom_css": [
         ".featured-product {background-color: #ffffff;}",
         ".featured-product__content {color: #1a1a18; padding: 10px; font-size: 1.6rem;}",
-        "a {color: #1a1a18; font-size: 1.4rem;}"
+        "a {color: #1a1a18; font-size: 1.4rem; text-decoration: none;}"
       ],
       "settings": {
         "heading": "Productos destacados"
