@@ -142,10 +142,10 @@
         "product_1"
       ],
       "custom_css": [
-        ".featured-product__title:hover {color: #EE6B19;}",
         ".featured-product {background-color: #ffffff;}",
         ".featured-product__content {color: #1a1a18; padding: 10px; font-size: 1.6rem;}",
-        "a {color: #1a1a18; font-size: 1.4rem; text-decoration: none;}"
+        "a {color: #1a1a18; font-size: 1.4rem; text-decoration: none;}",
+        "a:hover {color: #ee6b19;}"
       ],
       "settings": {
         "heading": "Productos destacados"
