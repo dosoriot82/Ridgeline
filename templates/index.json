@@ -101,7 +101,7 @@
       ],
       "custom_css": [
         ".category-card {background-color: #ffffff;}",
-        ".category-card__title {font-size: 1.3rem; padding: 10px; color: #1A1A18; }"
+        ".category-card__title {font-size: 1.3rem; padding: 0 10px 10px; color: #1a1a18;}"
       ],
       "settings": {
         "heading": "Categorías"
@@ -142,8 +142,7 @@
         "product_1"
       ],
       "custom_css": [
-        ".featured-product {box-shadow: 0 0 0px 2px #e4e4e4; background-color: #ffffff;}",
-        ".featured-product:hover {border: 1px solid #dbdbdb; transition: 200ms;}",
+        ".featured-product {background-color: #ffffff;}",
         ".featured-product__content {color: #1a1a18; padding: 10px; font-size: 1.6rem;}",
         "a {color: #1a1a18; font-size: 1.4rem;}"
       ],
