@@ -153,8 +153,7 @@
     "brand_story": {
       "type": "brand-story",
       "custom_css": [
-        "h2 {color: #4ec5ac;}",
-        "p {color: #e7e7e7;}"
+        "h2 {color: #ee6b19;}"
       ],
       "settings": {
         "heading": "Our History",
