@@ -14,8 +14,8 @@
     "header": {
       "type": "header",
       "custom_css": [
-        "a {color: #9ea318; font-size: 1.2rem; font-weight: 600;}",
-        ".header__icons {color: #9ea318;}"
+        "a {color: #EAE0C5; font-size: 1.2rem; font-weight: 600;}",
+        ".header__icons {color: #EAE0C5;}"
       ],
       "settings": {
         "logo": "shopify://shop_images/ridgeline-moto-supply-logo.webp",
