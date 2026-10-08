@@ -7,7 +7,7 @@
 
 <h1>{{ 'search.title' | t }}</h1>
 
-<form action="{{ routes.search_url }}" method="get" role="search">
+<form class="search__form" action="{{ routes.search_url }}" method="get" role="search">
   <input
     type="search"
     size="50"
@@ -51,6 +51,13 @@
 {% endif %}
 
 {% stylesheet %}
+  .search__form {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: var(--color-background);
+    border-bottom: 3px solid #ee6b19;
+  }
   .search-results {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
