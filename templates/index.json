@@ -166,67 +166,6 @@
         "text": "Get new releases, updates, and exclusive offers delivered to your inbox.",
         "button_label": "Subscribe"
       }
-    },
-    "custom_section_UcVxtL": {
-      "type": "custom-section",
-      "blocks": {
-        "group_6yzqeM": {
-          "type": "group",
-          "name": "t:general.column",
-          "settings": {
-            "layout_direction": "group--vertical",
-            "alignment": "flex-start",
-            "padding": 0
-          },
-          "blocks": {
-            "group_Rfpqtx": {
-              "type": "group",
-              "name": "t:general.row",
-              "settings": {
-                "layout_direction": "group--horizontal",
-                "alignment": "flex-start",
-                "padding": 0
-              },
-              "blocks": {}
-            },
-            "group_7J49XB": {
-              "type": "group",
-              "name": "t:general.row",
-              "settings": {
-                "layout_direction": "group--horizontal",
-                "alignment": "flex-start",
-                "padding": 0
-              },
-              "blocks": {}
-            },
-            "group_MkTfmy": {
-              "type": "group",
-              "name": "t:general.row",
-              "settings": {
-                "layout_direction": "group--horizontal",
-                "alignment": "flex-start",
-                "padding": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "group_Rfpqtx",
-            "group_7J49XB",
-            "group_MkTfmy"
-          ]
-        }
-      },
-      "block_order": [
-        "group_6yzqeM"
-      ],
-      "name": "t:general.custom_section",
-      "settings": {}
-    },
-    "custom_section_Ry9n7y": {
-      "type": "custom-section",
-      "name": "t:general.custom_section",
-      "settings": {}
     }
   },
   "order": [
@@ -234,8 +173,6 @@
     "categories",
     "featured_products",
     "brand_story",
-    "newsletter",
-    "custom_section_UcVxtL",
-    "custom_section_Ry9n7y"
+    "newsletter"
   ]
 }
