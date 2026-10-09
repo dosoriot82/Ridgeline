@@ -13,7 +13,6 @@
       "type": "search",
       "custom_css": [
         "h1 {margin-bottom: 2rem; font-size: 2rem; font-weight: 700; text-align: center; background-color: #ee6b1940; padding: 40px 0;}",
-        ".search-results {display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); padding: 20px 0; gap: 20px;}",
         ".search-result {padding: 10px; background-color: #ffffff; color: #ee6b19;}",
         ".search-result__content {color: #ee6b19; font-size: 1.3rem; text-decoration: none;}",
         "a {color: #1a1a18; text-decoration: none; font-size: 1.3rem;}"
