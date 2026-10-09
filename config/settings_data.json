@@ -10,6 +10,7 @@
 {
   "current": {
     "type_primary_font": "oswald_n7",
+    "type_secondary_font": "poppins_n4",
     "background_color": "#1A1A18",
     "foreground_color": "#F9F9F9",
     "content_for_index": []
@@ -17,7 +18,7 @@
   "platform_customizations": {
     "custom_css": [
       "h2 {color: #eae0c5; text-transform: uppercase;}",
-      "p,span {font-size: 1.2rem;}"
+      "p,span {font-size: 1.1rem;}"
     ]
   }
 }
