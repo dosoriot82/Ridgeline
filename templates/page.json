@@ -15,9 +15,14 @@
         "h1 {margin-bottom: 2rem; font-size: 2rem; font-weight: 700; text-align: center; background-color: #ee6b1940; padding: 40px 0;}"
       ],
       "settings": {}
+    },
+    "1791505818aa1443e2": {
+      "type": "apps",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "1791505818aa1443e2"
   ]
 }
