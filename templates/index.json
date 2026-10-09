@@ -12,29 +12,22 @@
     "hero": {
       "type": "hero-carousel",
       "blocks": {
-        "slide_1": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Ridgeline_-_Slide_3.webp"
-          }
-        },
         "slide_2": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Ridgeline_-_Slide_2.webp"
+            "image": "shopify://shop_images/Ridgeline_background_2.webp"
           }
         },
-        "slide_3": {
+        "slide_1": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Ridgeline_-_Slide_1.webp"
+            "image": "shopify://shop_images/Ridgeline_background_1_d25f02f3-4b75-4724-a586-a6aac3175307.webp"
           }
         }
       },
       "block_order": [
-        "slide_1",
         "slide_2",
-        "slide_3"
+        "slide_1"
       ],
       "custom_css": [
         ".hero-carousel {display: block; position: relative; height: clamp(22rem, 40svh, 44rem); overflow: hidden;}",
@@ -144,7 +137,7 @@
         "product_1"
       ],
       "custom_css": [
-        "h2 {border-bottom: 1px solid #eE6B19;}",
+        "h2 {border-bottom: 1px solid #ee6b19;}",
         ".featured-product {background-color: #ffffff;}",
         ".featured-product__content {color: #ee6b19; padding: 10px; font-size: 1.6rem;}",
         "a {color: #1a1a18; font-size: 1.4rem; text-decoration: none;}"
