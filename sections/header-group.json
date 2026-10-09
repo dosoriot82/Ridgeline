@@ -11,6 +11,14 @@
   "type": "header",
   "name": "t:general.header",
   "sections": {
+    "announcement_bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "text": "Free shipping on orders of $250 or more. Easy refunds.",
+        "background_color": "#EE6B19",
+        "foreground_color": "#FFFFFF"
+      }
+    },
     "header": {
       "type": "header",
       "custom_css": [
@@ -32,6 +40,7 @@
     }
   },
   "order": [
+    "announcement_bar",
     "header",
     "custom_section_GRyUCX"
   ]

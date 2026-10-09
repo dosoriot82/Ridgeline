@@ -1,0 +1,56 @@
+{% if section.settings.text != blank %}
+  <div
+    class="announcement-bar"
+    style="--announcement-bar-background: {{ section.settings.background_color }}; --announcement-bar-foreground: {{ section.settings.foreground_color }};"
+  >
+    <p class="announcement-bar__text">{{ section.settings.text | escape }}</p>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .announcement-bar {
+    display: grid;
+    grid-template-columns: var(--content-grid);
+    background-color: var(--announcement-bar-background);
+    color: var(--announcement-bar-foreground);
+  }
+
+  .announcement-bar__text {
+    grid-column: 2;
+    margin: 0;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.announcement_bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "Free shipping on orders of $250 or more. Easy refunds."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:labels.background",
+      "default": "#EE6B19"
+    },
+    {
+      "type": "color",
+      "id": "foreground_color",
+      "label": "t:labels.foreground",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:general.announcement_bar"
+    }
+  ]
+}
+{% endschema %}
