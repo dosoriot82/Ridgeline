@@ -15,7 +15,7 @@
       "type": "footer",
       "custom_css": [
         "h2 {color: #ee6b19;}",
-        ".footer__heading >a{color: #ee6b19;}",
+        ".footer__heading > a {color: #ee6b19;}",
         ".footer {border-top: 1px solid #ee6b1960; line-height: 1.5;}",
         ".footer__bottom {border-top: 1px solid #ee6b1960; line-height: 1.5; color: #ee6b19;}",
         ".footer__copyright > a {color: #ee6b19;}"
