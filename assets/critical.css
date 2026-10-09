@@ -78,6 +78,13 @@ body {
   color: var(--color-foreground);
 }
 
+p,
+span {
+  font-family: var(--font-secondary--family);
+  font-style: var(--font-secondary--style);
+  font-weight: var(--font-secondary--weight);
+}
+
 /** Section layout utilities */
 
 /**
