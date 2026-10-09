@@ -26,7 +26,18 @@
     "checkout": "Checkout",
     "title": "Cart",
     "update": "Update",
-    "remove": "Remove"
+    "remove": "Remove",
+    "drawer": {
+      "close": "Close cart",
+      "empty": "Your cart is empty.",
+      "continue_shopping": "Continue shopping",
+      "subtotal": "Subtotal",
+      "taxes_note": "Taxes and shipping calculated at checkout.",
+      "view_cart": "View cart",
+      "quantity": "Quantity",
+      "decrease": "Decrease quantity for {{ product }}",
+      "increase": "Increase quantity for {{ product }}"
+    }
   },
   "customers": {
     "login": {
