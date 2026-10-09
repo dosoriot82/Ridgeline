@@ -16,7 +16,8 @@
         ".search-results {display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); padding: 20px 0; gap: 20px;}",
         ".search-result {padding: 10px; background-color: #ffffff; color: #ee6b19;}",
         ".search-result__content {color: #ee6b19; font-size: 1.3rem; text-decoration: none;}",
-        "a {color: #1A1A18; text-decoration: none; font-size: 1.3rem;}"
+        "a {color: #1a1a18; text-decoration: none; font-size: 1.3rem;}",
+        ".search__form input[type=search] {border: 1px solid #EAE0C5;}"
       ],
       "settings": {}
     }
